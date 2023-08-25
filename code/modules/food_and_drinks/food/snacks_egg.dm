@@ -147,6 +147,17 @@
 		return
 	..()
 
+/obj/item/reagent_containers/food/snacks/moao
+	name = "mother of all omelettes"
+	desc = "The pinnacle of omelette perfection. Made from the best of eggs, this omelette will sate the hunger of anyone blessed enough to partake in its cheesy goodness."
+	icon_state = "moao"
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 6)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 12, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/capsaicin = 4)
+	bitesize = 4
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("eggy goodness" = 1, "cheesy perfection" = 1, "spicy supreme" = 1, "heavenly onion" = 1)
+	foodtype = BREAKFAST | EGG | DAIRY | VEGETABLES
+
 /obj/item/reagent_containers/food/snacks/benedict
 	name = "eggs benedict"
 	desc = "There is only one egg on this, how rude."

@@ -85,3 +85,14 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/omelette
 	category = CAT_EGG
+
+/datum/crafting_recipe/food/moao
+	name = "Mother of all Omelettes"
+	reqs = list(
+		/obj/effect/mob_spawn/human/ash_walker = 1,
+		/obj/item/reagent_containers/food/snacks/cheesewedge = 2,
+		/obj/item/reagent_containers/food/snacks/grown/chili = 2,
+		/obj/item/reagent_containers/food/snacks/grown/onion = 1
+	)
+	result = /obj/item/reagent_containers/food/snacks/moao
+	category = CAT_EGG
