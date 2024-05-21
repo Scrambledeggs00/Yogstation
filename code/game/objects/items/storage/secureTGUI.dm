@@ -12,16 +12,19 @@
 	//What shows in lock_status_display
 	var/lock_display = "UNLOCKED"
 	//If there is an error message
-	var/error_message = FALSE
+	var/error_message = TRUE
+	//Sound to play
+	var/keypad_sound = 'sound/machines/terminal_select.ogg'
 
 /obj/item/storage/secureTGUI/ui_state(mob/user)
 	return GLOB.physical_state
 
 /obj/item/storage/secureTGUI/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, name + "'s keypad")
+	ui = SStgui.try_update_ui(user, src, name)
 	if(!ui)
 		ui = new(user, src, "SecureTGUI")
 		ui.open()
+		ui.set_autoupdate(TRUE)
 
 /obj/item/storage/secureTGUI/ui_data(mob/user)
 	var/list/data = list()
@@ -33,36 +36,56 @@
 	. = ..()
 	if(.)
 		return
-	if(action == "enter_code")
-		//Make input the access code if there is none and it meets criteria
-		if(access_code == "" && length(keypad_input) == 5)
-			access_code = keypad_input
-			keypad_input = "*****"
-		//Code too short
-		else if(length(keypad_input) != 5)
-			keypad_input = "ERROR: NOT A 5 DIGIT CODE"
-			error_message = TRUE
-			return FALSE
-		//Wrong code
-		else if(keypad_input != access_code)
-			keypad_input = "ERROR: WRONG CODE"
-			error_message = TRUE
-			return FALSE
-		//Correct code
-		else if(keypad_input == access_code)
-			keypad_input = "*****"
-			//Unlock if locked
-			if(lock_status)
-				lock_status = FALSE
-				lock_display = "UNLOCKED"
-		. = TRUE
-	if(action == "reset_code")
-		keypad_input = ""
-		error_message = FALSE
-		lock_status = TRUE
-		lock_display = "LOCKED"
-		. = TRUE
-	update_icon()
+	if(action == "keypad")
+		var/digit = params["digit"]
+		switch(digit)
+			if("0","1","2","3","4","5","6","7","8","9")
+				//No input when an error exists
+				if(!error_message)
+					keypad_input += digit
+					//Throw an error if too many digits
+					if(length(keypad_input) > 5)
+						keypad_input = "ERROR: TOO MANY DIGITS"
+						error_message = TRUE
+					. = TRUE
+			if("E")
+				//Make input the access code if there is none and it meets criteria
+				if(access_code == "" && length(keypad_input) == 5)
+					access_code = keypad_input
+					keypad_input = "*****"
+					. = TRUE
+				//Code too short
+				else if(length(keypad_input) != 5)
+					keypad_input = "ERROR: TOO FEW DIGITS"
+					error_message = TRUE
+				//Wrong code
+				else if(keypad_input != access_code)
+					keypad_input = "ERROR: WRONG CODE"
+					error_message = TRUE
+				//Correct code
+				else if(keypad_input == access_code)
+					keypad_input = "*****"
+					//Unlock if locked
+					if(lock_status)
+						lock_status = FALSE
+						lock_display = "UNLOCKED"
+					. = TRUE
+			//Reset current code
+			if("R")
+				keypad_input = "INPUT 5 DIGIT CODE"
+				error_message = FALSE
+				lock_status = TRUE
+				lock_display = "LOCKED"
+				. = TRUE
+		//Play appropriate sound
+		if(error_message)
+			keypad_sound = 'sound/machines/terminal_prompt_deny.ogg'
+		else if(keypad_input == "*****")
+			keypad_sound = 'sound/machines/terminal_prompt_confirm.ogg'
+		else
+			keypad_sound = 'sound/machines/terminal_select.ogg'
+		playsound(src, keypad_sound, 10, FALSE)
+
 
 			
 			

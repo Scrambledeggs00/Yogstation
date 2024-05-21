@@ -11,7 +11,7 @@ type Data = {
 const SecureKeypad = (props, context) => {
   const { act } = useBackend(context);
   const keypadKeys = [
-    ['1', '4', '7', 'C'],
+    ['1', '4', '7', 'R'],
     ['2', '5', '8', '0'],
     ['3', '6', '9', 'E'],
   ];
