@@ -21,12 +21,17 @@
 	. = ..()
 	if(!isobj(parent))
 		return COMPONENT_INCOMPATIBLE
-	
-	var/atom/atom_parent = parent
 
 	src.access_code = access_code
 	src.lock_status = locked
 	src.keypad_input = display
+
+	var/atom/atom_parent = parent
+
+	if(atom_parent != /obj/item/storage/briefcase/secure)
+		var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+		STR.set_holdable(null, list(/obj/item/storage/briefcase/secure))
+		STR.max_w_class = 8 //??
 
 	atom_parent.update_appearance()
 
@@ -90,7 +95,7 @@
 
 /datum/component/keypad_lock/proc/on_update_icon_state(obj/source)
 	SIGNAL_HANDLER
-	source.icon_state = "[source.base_icon_state][src.lock_status ? "_locked" : null]"
+	source.icon_state = source.base_icon_state + "[src.lock_status ? "_locked" : null]"
 
 /datum/component/keypad_lock/proc/on_interact(atom/source, mob/user)
 	SIGNAL_HANDLER
@@ -115,6 +120,7 @@
 		return
 	if(action == "keypad")
 		var/digit = params["digit"]
+		var/atom/source = parent
 		switch(digit)
 			if("0","1","2","3","4","5","6","7","8","9")
 				//No input when an error exists
@@ -139,6 +145,7 @@
 						src.lock_status = FALSE
 						lock_display = "UNLOCKED"
 						SEND_SIGNAL(parent, COMSIG_TRY_STORAGE_SET_LOCKSTATE, lock_status)
+						source.update_appearance(UPDATE_ICON)
 						. = TRUE
 					//Code too short
 					else if(length(src.keypad_input) < 5)
@@ -156,6 +163,7 @@
 							src.lock_status = FALSE
 							lock_display = "UNLOCKED"
 							SEND_SIGNAL(parent, COMSIG_TRY_STORAGE_SET_LOCKSTATE, lock_status)
+							source.update_appearance(UPDATE_ICON)
 						. = TRUE
 			//Reset current code
 			if("R")
@@ -169,6 +177,7 @@
 				lock_display = "LOCKED"
 				SEND_SIGNAL(parent, COMSIG_TRY_STORAGE_SET_LOCKSTATE, lock_status)
 				SEND_SIGNAL(parent, COMSIG_TRY_STORAGE_HIDE_FROM, usr)
+				source.update_appearance(UPDATE_ICON)
 				. = TRUE
 		//Play appropriate sound
 		if(error_message)

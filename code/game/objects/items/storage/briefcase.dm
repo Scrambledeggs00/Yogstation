@@ -58,6 +58,7 @@
 /obj/item/storage/briefcase/secure
 	name = "secure briefcase"
 	icon_state = "secure"
+	base_icon_state = "secure"
 	item_state = "sec-case"
 	desc = "A large briefcase with a digital locking system."
 
