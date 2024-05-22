@@ -12,7 +12,9 @@
 	//What shows in lock_status_display
 	var/lock_display = "UNLOCKED"
 	//If there is an error message
-	var/error_message = TRUE
+	var/error_message = FALSE
+	//If a display message can be replaced by code
+	var/display_message = TRUE
 	//Sound to play
 	var/keypad_sound = 'sound/machines/terminal_select.ogg'
 
@@ -20,9 +22,9 @@
 	return GLOB.physical_state
 
 /obj/item/storage/secureTGUI/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, name)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "SecureTGUI")
+		ui = new(user, src, "SecureTGUI", name + "'s keypad")
 		ui.open()
 		ui.set_autoupdate(TRUE)
 
@@ -42,38 +44,45 @@
 			if("0","1","2","3","4","5","6","7","8","9")
 				//No input when an error exists
 				if(!error_message)
-					keypad_input += digit
+					if(display_message == TRUE)
+						keypad_input = digit
+						display_message = FALSE
+					else
+						keypad_input += digit
 					//Throw an error if too many digits
 					if(length(keypad_input) > 5)
 						keypad_input = "ERROR: TOO MANY DIGITS"
 						error_message = TRUE
 					. = TRUE
 			if("E")
-				//Make input the access code if there is none and it meets criteria
-				if(access_code == "" && length(keypad_input) == 5)
-					access_code = keypad_input
-					keypad_input = "*****"
-					. = TRUE
-				//Code too short
-				else if(length(keypad_input) != 5)
-					keypad_input = "ERROR: TOO FEW DIGITS"
-					error_message = TRUE
-				//Wrong code
-				else if(keypad_input != access_code)
-					keypad_input = "ERROR: WRONG CODE"
-					error_message = TRUE
-				//Correct code
-				else if(keypad_input == access_code)
-					keypad_input = "*****"
-					//Unlock if locked
-					if(lock_status)
-						lock_status = FALSE
-						lock_display = "UNLOCKED"
-					. = TRUE
+				//Only allow if there is no error message
+				if(!error_message)
+					//Make input the access code if there is none and it meets criteria
+					if(access_code == "" && length(keypad_input) == 5)
+						access_code = keypad_input
+						keypad_input = "*****"
+						. = TRUE
+					//Code too short
+					else if(length(keypad_input) < 5)
+						keypad_input = "ERROR: TOO FEW DIGITS"
+						error_message = TRUE
+					//Wrong code
+					else if(keypad_input != access_code)
+						keypad_input = "ERROR: WRONG CODE"
+						error_message = TRUE
+					//Correct code
+					else if(keypad_input == access_code)
+						keypad_input = "*****"
+						//Unlock if locked
+						if(lock_status)
+							lock_status = FALSE
+							lock_display = "UNLOCKED"
+						. = TRUE
 			//Reset current code
 			if("R")
 				keypad_input = "INPUT 5 DIGIT CODE"
 				error_message = FALSE
+				display_message = TRUE
 				lock_status = TRUE
 				lock_display = "LOCKED"
 				. = TRUE
