@@ -43617,7 +43617,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/med_data/laptop,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 5;
 	pixel_y = 29
 	},
@@ -75802,7 +75802,7 @@
 /obj/item/toy/figure/detective{
 	pixel_x = -8
 	},
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 6;
 	pixel_y = -28
 	},

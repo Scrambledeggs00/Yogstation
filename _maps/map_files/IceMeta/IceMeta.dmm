@@ -1258,7 +1258,7 @@
 /area/quartermaster/qm)
 "aue" = (
 /obj/structure/table/wood,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 32
 	},
 /obj/machinery/button/door{
@@ -3067,7 +3067,7 @@
 /turf/open/floor/plasteel,
 /area/hydroponics)
 "aTa" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 32
 	},
 /obj/machinery/status_display/ai{
@@ -3718,7 +3718,7 @@
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
 "bdG" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	name = "armory safe A";
 	pixel_x = 6;
 	pixel_y = 28
@@ -14447,7 +14447,7 @@
 /area/science/nanite)
 "enJ" = (
 /obj/structure/table/wood,
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = -2
 	},
 /obj/item/book/manual/wiki/security_space_law,
@@ -19954,7 +19954,7 @@
 /area/maintenance/port)
 "fVk" = (
 /obj/structure/table/wood,
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	desc = "A large briefcase with a digital locking system, and the Nanotrasen logo emblazoned on the sides.";
 	name = "Nanotrasen-brand secure briefcase exhibit";
 	pixel_y = 2
@@ -28631,7 +28631,7 @@
 /area/maintenance/port/aft)
 "iuY" = (
 /obj/structure/rack,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/clothing/mask/cigarette/cigar,
 /obj/machinery/computer/security/telescreen/ce{
 	dir = 1;
@@ -33024,7 +33024,7 @@
 	pixel_y = 24
 	},
 /obj/structure/closet/secure_closet/personal,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /turf/open/floor/plasteel,
 /area/vacant_room/commissary)
 "jGm" = (
@@ -33449,7 +33449,7 @@
 	pixel_x = 28
 	},
 /obj/structure/dresser,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 6;
 	pixel_y = 28
 	},
@@ -33748,7 +33748,7 @@
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/solar/port/aft)
 "jPS" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 6;
 	pixel_y = 30
 	},
@@ -46900,7 +46900,7 @@
 /obj/machinery/light_switch{
 	pixel_x = -28
 	},
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = -2;
 	pixel_y = 4
 	},
@@ -50902,7 +50902,7 @@
 /obj/machinery/camera{
 	c_tag = "Evidence Storage"
 	},
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	name = "evidence safe";
 	pixel_x = 6;
 	pixel_y = 28
@@ -54903,7 +54903,7 @@
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
 "pQT" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	name = "armory safe B";
 	pixel_x = 6;
 	pixel_y = 28
@@ -55325,7 +55325,7 @@
 /area/medical/storage)
 "pWX" = (
 /obj/machinery/recharger,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 34
 	},
 /obj/structure/table/wood,
@@ -57892,7 +57892,7 @@
 /area/security/brig)
 "qHs" = (
 /obj/structure/table/glass,
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = -22;
 	pixel_y = 3
 	},
@@ -58548,7 +58548,7 @@
 	pixel_y = 30
 	},
 /obj/machinery/computer/med_data/laptop,
-/obj/item/storage/secure/safe/HoS{
+/obj/structure/secure_safe/HoS{
 	pixel_x = 36;
 	pixel_y = 28
 	},
@@ -61046,7 +61046,7 @@
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = 2;
 	pixel_y = -2
 	},
@@ -62172,7 +62172,7 @@
 "rXj" = (
 /obj/machinery/light,
 /obj/structure/rack,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/clothing/mask/cigarette/cigar,
 /obj/machinery/firealarm{
 	dir = 1;
@@ -63904,10 +63904,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/structure/table/wood,
 /obj/item/folder/blue,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/assembly/flash/handheld,
 /obj/machinery/computer/security/telescreen/vault{
 	pixel_y = 30
@@ -66285,7 +66285,7 @@
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = 2;
 	pixel_y = -2
 	},
@@ -69029,7 +69029,7 @@
 /turf/open/floor/plasteel/dark,
 /area/construction/storage_wing)
 "tSm" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 6;
 	pixel_y = -30
 	},
@@ -82329,7 +82329,7 @@
 /area/aisat)
 "xyt" = (
 /obj/structure/safe,
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	contents = newlist(/obj/item/clothing/suit/armor/vest,/obj/item/gun/ballistic/automatic/pistol,/obj/item/suppressor,/obj/item/melee/classic_baton/telescopic,/obj/item/clothing/mask/balaclava,/obj/item/bodybag,/obj/item/soap/nanotrasen)
 	},
 /obj/item/storage/backpack/duffelbag/syndie/hitman,
@@ -84050,7 +84050,7 @@
 "xUE" = (
 /obj/structure/table,
 /obj/item/folder/red,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /turf/open/floor/plasteel,
 /area/security/main)
 "xUN" = (

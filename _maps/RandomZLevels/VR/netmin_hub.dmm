@@ -260,7 +260,7 @@
 "bS" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/cognac,
-/obj/item/storage/secure/safe/scientist_raid{
+/obj/structure/secure_safe/scientist_raid{
 	pixel_x = 32
 	},
 /obj/item/storage/fancy/cigarettes/cigars/havana,

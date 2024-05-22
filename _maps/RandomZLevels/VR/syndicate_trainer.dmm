@@ -2270,7 +2270,7 @@
 /area/awaymission/centcomAway/hangar)
 "mU" = (
 /obj/structure/rack,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/storage/belt/utility/full,
 /turf/open/indestructible,
 /area/awaymission/centcomAway/general)

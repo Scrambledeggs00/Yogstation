@@ -219,7 +219,7 @@
 /turf/open/floor/wood,
 /area/clerk)
 "K" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 5;
 	pixel_y = -25
 	},

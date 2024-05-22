@@ -19,7 +19,7 @@
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/disk/data,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/item/grenade/smokebomb,
@@ -50,7 +50,7 @@
 /area/template_noop)
 "w" = (
 /obj/item/soap/deluxe,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 6;
 	pixel_y = 28
 	},

@@ -573,7 +573,7 @@
 /turf/open/floor/plasteel,
 /area/science/mixing)
 "adM" = (
-/obj/item/storage/secure/safe/HoS{
+/obj/structure/secure_safe/HoS{
 	pixel_x = 35
 	},
 /obj/structure/closet/secure_closet/hos,
@@ -3298,7 +3298,7 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/storage/eva)
 "ayM" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = -24
 	},
 /turf/open/floor/plating,
@@ -16374,7 +16374,7 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "cZJ" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = -23
 	},
 /obj/machinery/light/small{
@@ -31864,7 +31864,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/med_data/laptop,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 5;
 	pixel_y = 29
 	},
@@ -50612,7 +50612,7 @@
 /area/engine/engine_smes)
 "ppk" = (
 /obj/item/kirbyplants/random,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = -24;
 	pixel_y = 2
 	},

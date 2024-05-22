@@ -45,7 +45,7 @@ const SecureKeypad = (props, context) => {
   );
 };
 
-export const SecureTGUI = (props, context) => {
+export const KeypadLock = (props, context) => {
   const { data } = useBackend<Data>(context);
 
   const { lock_status_display } = data;

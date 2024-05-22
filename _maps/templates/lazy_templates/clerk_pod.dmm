@@ -461,7 +461,7 @@
 /area/clerk)
 "W" = (
 /obj/effect/landmark/event_spawn,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 35;
 	pixel_y = 5
 	},

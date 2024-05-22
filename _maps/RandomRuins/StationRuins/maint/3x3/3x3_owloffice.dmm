@@ -73,7 +73,7 @@
 /area/template_noop)
 "N" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/restraints/handcuffs,
 /obj/item/grenade/smokebomb,
 /obj/item/modular_computer/tablet/preset/cheap,

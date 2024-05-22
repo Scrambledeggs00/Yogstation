@@ -2814,7 +2814,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A secure briefcase containing 5000 space credits. Useful for bribing personnel, or purchasing goods \
 			and services at lucrative prices. The briefcase also feels a little heavier to hold; it has been \
 			manufactured to pack a little bit more of a punch if your client needs some convincing."
-	item = /obj/item/storage/secure/briefcase/syndie
+	item = /obj/item/storage/briefcase/secure/syndie
 	cost = 1
 	restricted = TRUE
 

@@ -2689,7 +2689,7 @@
 /area/awaymission/vr/syndicate)
 "Ol" = (
 /obj/structure/rack,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/storage/belt/utility/full,
 /turf/open/indestructible,
 /area/awaymission/vr/syndicate)

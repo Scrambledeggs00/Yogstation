@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(battleroyale_weapon, list(
 		/obj/item/melee/skateboard/pro = 4,
 		/obj/item/reagent_containers/food/drinks/trophy/gold_cup = 4,
 		/obj/item/pickaxe = 4,
-		/obj/item/storage/secure/briefcase/syndie = 4,
+		/obj/item/storage/briefcase/secure/syndie = 4,
 
 		/obj/item/kitchen/knife/combat/survival = 3,
 		/obj/item/storage/belt/sabre = 3,

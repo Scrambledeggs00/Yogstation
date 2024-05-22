@@ -36,13 +36,12 @@
 	minimum_growth = 1 
 	maximum_growth = 4
 
-/obj/item/storage/secure/safe/scientist_raid
+/obj/structure/secure_safe/scientist_raid
 	name = "secure safe"
 
-/obj/item/storage/secure/safe/scientist_raid/Initialize(mapload)
+/obj/structure/secure_safe/scientist_raid/Initialize(mapload)
 	. = ..()
-	l_code = "7295"
-	l_set = TRUE
+	AddComponent(/datum/component/keypad_lock, access_code = "7295", locked = TRUE, display = "INPUT 5 DIGIT CODE")
 	new /obj/item/ai_cpu/organic(src)
 	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, TRUE)
 	cut_overlays()

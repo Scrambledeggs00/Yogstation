@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(maintenance_loot_traditional,list(
 	/obj/item/storage/briefcase = W_RARE,
 	/obj/item/storage/briefcase/lawyer = W_RARE,
 	/obj/item/storage/firstaid/emergency = W_COMMON,
-	/obj/item/storage/secure/briefcase = W_RARE,
+	/obj/item/storage/briefcase/secure = W_RARE,
 	/obj/item/storage/wallet/random = W_COMMON,
 	/obj/item/clothing/gloves/color/yellow = W_MYTHICAL,
 	/obj/item/clothing/gloves/color/red/insulated = W_MYTHICAL,

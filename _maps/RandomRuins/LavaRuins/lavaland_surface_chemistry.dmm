@@ -148,7 +148,7 @@
 /turf/open/floor/plating/lavaland_baseturf,
 /area/lavaland/surface/outdoors)
 "z" = (
-/obj/item/storage/secure/safe,
+/obj/structure/secure_safe,
 /obj/item/paper{
 	info = "Mix 30 units of O2 with precisely 12 units of \[br]\[i]*a few paragraphs are torn out*\[/i] \[br]within an oxygenated atmosphere of roughly 650-degree Chlorine. Once the gray mass has solidifed, carefully remove it (hot!) and place in distilled water. Check the object regularly. Once the outer layer peels off, the plasma should shine below! \[br]Note, the recipe is a work-in-progress and should not be attempted without proper safety precautions.";
 	name = "Plasma Synthetizing Recipe"

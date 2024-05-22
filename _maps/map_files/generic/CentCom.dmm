@@ -2041,7 +2041,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/structure/table/wood,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -4086,7 +4086,7 @@
 "aoq" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/wooden_tv,
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 32;
 	pixel_y = 24
 	},
@@ -4209,7 +4209,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/structure/table/wood,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -4367,7 +4367,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/structure/table/wood,
 /obj/structure/noticeboard{
 	dir = 8;
@@ -5160,7 +5160,7 @@
 /area/centcom/testchamber)
 "aqi" = (
 /obj/structure/table/wood,
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -15249,7 +15249,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/structure/table/wood,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -17735,7 +17735,7 @@
 /area/centcom/holding)
 "aQX" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -17750,7 +17750,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "aQY" = (

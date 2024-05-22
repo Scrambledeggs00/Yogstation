@@ -94,8 +94,3 @@
 		else
 			keypad_sound = 'sound/machines/terminal_select.ogg'
 		playsound(src, keypad_sound, 10, FALSE)
-
-
-			
-			
-

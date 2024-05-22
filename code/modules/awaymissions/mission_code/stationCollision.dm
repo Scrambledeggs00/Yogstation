@@ -124,13 +124,13 @@ GLOBAL_VAR_INIT(sc_safecode5, "[rand(0,9)]")
 /*
  * Captain's safe
  */
-/obj/item/storage/secure/safe/sc_ssafe
+/obj/structure/secure_safe/sc_ssafe
 	name = "Captain's secure safe"
 
-/obj/item/storage/secure/safe/sc_ssafe/Initialize(mapload)
+/obj/structure/secure_safe/sc_ssafe/Initialize(mapload)
 	. = ..()
-	l_code = "[GLOB.sc_safecode1][GLOB.sc_safecode2][GLOB.sc_safecode3][GLOB.sc_safecode4][GLOB.sc_safecode5]"
-	l_set = 1
+	var/code = "[GLOB.sc_safecode1][GLOB.sc_safecode2][GLOB.sc_safecode3][GLOB.sc_safecode4][GLOB.sc_safecode5]"
+	AddComponent(/datum/component/keypad_lock, access_code = code, locked = TRUE, display = "INPUT 5 DIGIT CODE")
 	new /obj/item/gun/energy/mindflayer(src)
 	new /obj/item/soulstone(src)
 	new /obj/item/clothing/suit/space/hardsuit/cult(src)

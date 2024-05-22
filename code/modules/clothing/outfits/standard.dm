@@ -170,7 +170,7 @@
 	ears = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_pocket = /obj/item/melee/transforming/energy/sword/saber
-	l_hand = /obj/item/storage/secure/briefcase
+	l_hand = /obj/item/storage/briefcase/secure
 	id = /obj/item/card/id/syndicate
 	belt = /obj/item/modular_computer/tablet/pda/preset/syndicate
 
@@ -182,7 +182,7 @@
 		return
 
 	//Could use a type
-	var/obj/item/storage/secure/briefcase/sec_briefcase = H.get_item_for_held_index(1)
+	var/obj/item/storage/briefcase/secure/sec_briefcase = H.get_item_for_held_index(1)
 	for(var/obj/item/briefcase_item in sec_briefcase)
 		qdel(briefcase_item)
 	for(var/i = 3 to 0 step -1)

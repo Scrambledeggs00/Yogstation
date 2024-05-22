@@ -95,7 +95,7 @@
 	description = "Central Command will be holding a business convention this year. Ship a few briefcases in support."
 	reward = 2500
 	required_count = 5
-	wanted_types = list(/obj/item/storage/briefcase, /obj/item/storage/secure/briefcase)
+	wanted_types = list(/obj/item/storage/briefcase, /obj/item/storage/briefcase/secure)
 
 /datum/bounty/item/assistant/sunglasses
 	name = "Sunglasses"

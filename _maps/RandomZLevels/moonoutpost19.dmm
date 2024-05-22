@@ -4355,7 +4355,7 @@
 	},
 /area/awaymission/moonoutpost19/research)
 "it" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/blood/splatter,
@@ -4549,7 +4549,7 @@
 /area/awaymission/moonoutpost19/research)
 "iM" = (
 /obj/structure/table,
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/item/taperecorder{
 	pixel_x = -3
 	},

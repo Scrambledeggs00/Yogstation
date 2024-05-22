@@ -3390,7 +3390,7 @@
 /turf/open/floor/plating,
 /area/quartermaster/sorting)
 "bss" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 35;
 	pixel_y = 5
 	},
@@ -54069,7 +54069,7 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "wPm" = (
-/obj/item/storage/secure/safe{
+/obj/structure/secure_safe{
 	pixel_x = 4;
 	pixel_y = 24
 	},
@@ -57448,7 +57448,7 @@
 /area/medical/genetics/cloning)
 "yda" = (
 /obj/structure/table/wood,
-/obj/item/storage/secure/safe/HoS{
+/obj/structure/secure_safe/HoS{
 	pixel_x = 35
 	},
 /turf/open/floor/carpet,

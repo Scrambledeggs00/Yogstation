@@ -54,3 +54,22 @@
 	..()
 	new /obj/item/autosurgeon/nt_mantis(src)
 	new /obj/item/autosurgeon/nt_mantis/left(src)
+
+/obj/item/storage/briefcase/secure
+	name = "secure briefcase"
+	icon_state = "secure"
+	item_state = "sec-case"
+	desc = "A large briefcase with a digital locking system."
+
+/obj/item/storage/briefcase/secure/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/keypad_lock)
+
+/obj/item/storage/briefcase/secure/syndie
+	force = 15
+
+/obj/item/storage/briefcase/secure/syndie/PopulateContents()
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	for(var/i = 0, i < STR.max_items - 2, i++)
+		new /obj/item/stack/spacecash/c1000(src)
