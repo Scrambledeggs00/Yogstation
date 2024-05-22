@@ -23,7 +23,7 @@
 		return COMPONENT_INCOMPATIBLE
 	
 	var/atom/atom_parent = parent
-	
+
 	src.access_code = access_code
 	src.lock_status = locked
 	src.keypad_input = display
@@ -85,8 +85,8 @@
 		source.balloon_alert(user, "interupted!")
 		return
 	source.balloon_alert(user, "memory reset")
-	access_code = ""
-	keypad_input = "INPUT NEW 5 DIGIT CODE"
+	src.access_code = ""
+	src.keypad_input = "INPUT NEW 5 DIGIT CODE"
 
 /datum/component/keypad_lock/proc/on_update_icon_state(obj/source)
 	SIGNAL_HANDLER
@@ -96,23 +96,20 @@
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 
-/datum/component/keypad_lock/ui_state(mob/user)
-	return GLOB.physical_state
-
 /datum/component/keypad_lock/ui_interact(mob/user, datum/tgui/ui) //Thanks chubby for helping me with TGUI 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "KeypadLock", parent + "'s keypad")
+		ui = new(user, src, "KeypadLock", parent)
 		ui.open()
 		ui.set_autoupdate(TRUE)
 
 /datum/component/keypad_lock/ui_data(mob/user)
 	var/list/data = list()
 	data["lock_status_display"] = "Lock Status: " + lock_display
-	data["keypad_code_display"] = keypad_input
+	data["keypad_code_display"] = src.keypad_input
 	return data
 
-/datum/component/keypad_lock/ui_act(action, list/params)
+/datum/component/keypad_lock/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -123,51 +120,60 @@
 				//No input when an error exists
 				if(!error_message)
 					if(replace_message == TRUE)
-						keypad_input = digit
+						src.keypad_input = digit
 						replace_message = FALSE
 					else
-						keypad_input += digit
+						src.keypad_input += digit
 					//Throw an error if too many digits
-					if(length(keypad_input) > 5)
-						keypad_input = "ERROR: TOO MANY DIGITS"
+					if(length(src.keypad_input) > 5)
+						src.keypad_input = "ERROR: TOO MANY DIGITS"
 						error_message = TRUE
 					. = TRUE
 			if("E")
 				//Only allow if there is no error message
 				if(!error_message)
 					//Make input the access code if there is none and it meets criteria
-					if(access_code == "" && length(keypad_input) == 5)
-						access_code = keypad_input
-						keypad_input = "*****"
+					if(src.access_code == "" && length(src.keypad_input) == 5)
+						src.access_code = src.keypad_input
+						src.keypad_input = "*****"
+						src.lock_status = FALSE
+						lock_display = "UNLOCKED"
+						SEND_SIGNAL(parent, COMSIG_TRY_STORAGE_SET_LOCKSTATE, lock_status)
 						. = TRUE
 					//Code too short
-					else if(length(keypad_input) < 5)
-						keypad_input = "ERROR: TOO FEW DIGITS"
+					else if(length(src.keypad_input) < 5)
+						src.keypad_input = "ERROR: TOO FEW DIGITS"
 						error_message = TRUE
 					//Wrong code
-					else if(keypad_input != access_code)
-						keypad_input = "ERROR: WRONG CODE"
+					else if(src.keypad_input != src.access_code)
+						src.keypad_input = "ERROR: WRONG CODE"
 						error_message = TRUE
 					//Correct code
-					else if(keypad_input == access_code)
-						keypad_input = "*****"
+					else if(src.keypad_input == src.access_code)
+						src.keypad_input = "*****"
 						//Unlock if locked
-						if(lock_status)
-							lock_status = FALSE
+						if(src.lock_status)
+							src.lock_status = FALSE
 							lock_display = "UNLOCKED"
+							SEND_SIGNAL(parent, COMSIG_TRY_STORAGE_SET_LOCKSTATE, lock_status)
 						. = TRUE
 			//Reset current code
 			if("R")
-				keypad_input = "INPUT 5 DIGIT CODE"
+				if(access_code == "")
+					src.keypad_input = "INPUT NEW 5 DIGIT CODE"
+				else
+					src.keypad_input = "INPUT 5 DIGIT CODE"
 				error_message = FALSE
 				replace_message = TRUE
-				lock_status = TRUE
+				src.lock_status = TRUE
 				lock_display = "LOCKED"
+				SEND_SIGNAL(parent, COMSIG_TRY_STORAGE_SET_LOCKSTATE, lock_status)
+				SEND_SIGNAL(parent, COMSIG_TRY_STORAGE_HIDE_FROM, usr)
 				. = TRUE
 		//Play appropriate sound
 		if(error_message)
 			keypad_sound = 'sound/machines/terminal_prompt_deny.ogg'
-		else if(keypad_input == "*****")
+		else if(src.keypad_input == "*****")
 			keypad_sound = 'sound/machines/terminal_prompt_confirm.ogg'
 		else
 			keypad_sound = 'sound/machines/terminal_select.ogg'

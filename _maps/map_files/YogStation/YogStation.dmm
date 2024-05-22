@@ -21741,7 +21741,7 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
 "eUI" = (
-/obj/item/storage/secure/briefcase,
+/obj/item/storage/briefcase/secure,
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/turf_decal/tile/brown/opposingcorners,
 /turf/open/floor/plasteel,
@@ -60470,7 +60470,7 @@
 	pixel_x = 1;
 	pixel_y = 7
 	},
-/obj/item/storage/secure/briefcase{
+/obj/item/storage/briefcase/secure{
 	pixel_x = -1;
 	pixel_y = -1
 	},
