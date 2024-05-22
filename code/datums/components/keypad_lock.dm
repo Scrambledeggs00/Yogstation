@@ -11,21 +11,22 @@
 	var/error_message = FALSE
 	//If a display message can be replaced by code
 	var/replace_message = TRUE
-	//If it is being hacked
-	var/reseting_memory = FALSE
 	//Sound to play
 	var/keypad_sound = 'sound/machines/terminal_select.ogg'
 
-/datum/component/keypad_lock/Initialize(access_code, locked, display)
+	//If the panel is open
+	var/panel_open = FALSE
+
+/datum/component/keypad_lock/Initialize(access_code = "", locked = FALSE, display = "INPUT NEW 5 DIGIT CODE")
 	. = ..()
-	if(!obj(parent))
+	if(!isobj(parent))
 		return COMPONENT_INCOMPATIBLE
 	
 	var/atom/atom_parent = parent
 	
 	src.access_code = access_code
-	src.locked = lock_status
-	src.display = keypad_input
+	src.lock_status = locked
+	src.keypad_input = display
 
 	atom_parent.update_appearance()
 
@@ -58,43 +59,40 @@
 
 /datum/component/keypad_lock/proc/on_examine(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += "The service panel is currently <b>[open ? "unscrewed" : "screwed shut"]</b>."
+	examine_list += "The service panel is currently <b>[panel_open ? "unscrewed" : "screwed shut"]</b>."
 
 /datum/component/keypad_lock/proc/on_screwdriver_act(atom/source, mob/user, obj/item/tool)
-	if(!source.atom_storage.locked)
+	SIGNAL_HANDLER
+	if(!src.lock_status)
 		return COMPONENT_BLOCK_TOOL_ATTACK
-
 	panel_open = !panel_open
 	source.balloon_alert(user, "panel [panel_open ? "opened" : "closed"]")
 	return COMPONENT_BLOCK_TOOL_ATTACK
 
 /datum/component/keypad_lock/proc/on_multitool_act(atom/source, mob/user, obj/item/tool)
 	SIGNAL_HANDLER
-	if(!source.atom_storage.locked)
+	if(!src.lock_status)
 		return COMPONENT_BLOCK_TOOL_ATTACK
 	if(!panel_open)
-		source.balloon_alert(user, "panel closed!")
+		source.balloon_alert(user, "panel is closed!")
 		return COMPONENT_BLOCK_TOOL_ATTACK
-	if(!reseting_memory)
-		source.balloon_alert(user, "reseting memory")
-		reseting_memory = TRUE
-		if(tool.use_tool(src, user, 400))
-			source.balloon_alert(user, "memory reset")
-			access_code = ""
-			keypad_input = "INPUT NEW 5 DIGIT CODE"
-			reseting_memory = FALSE
-		else
-			source.balloon_alert(user, "interupted!")
-			reseting_memory = FALSE
-	else
-		source.balloon_alert(user, "in progress")
+	source.balloon_alert(user, "reseting memory")
+	INVOKE_ASYNC(src, PROC_REF(hack_open), source, user, tool)
 	return COMPONENT_BLOCK_TOOL_ATTACK
+
+/datum/component/keypad_lock/proc/hack_open(atom/source, mob/user, obj/item/tool)
+	if(!tool.use_tool(parent, user, 40 SECONDS))
+		source.balloon_alert(user, "interupted!")
+		return
+	source.balloon_alert(user, "memory reset")
+	access_code = ""
+	keypad_input = "INPUT NEW 5 DIGIT CODE"
 
 /datum/component/keypad_lock/proc/on_update_icon_state(obj/source)
 	SIGNAL_HANDLER
-	source.icon_state = "[source.base_icon_state][source.atom_storage.locked ? "_locked" : null]"
+	source.icon_state = "[source.base_icon_state][src.lock_status ? "_locked" : null]"
 
-/datum/component/keypad_lock/on_interact(atom/source, mob/user)
+/datum/component/keypad_lock/proc/on_interact(atom/source, mob/user)
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 
@@ -104,7 +102,7 @@
 /datum/component/keypad_lock/ui_interact(mob/user, datum/tgui/ui) //Thanks chubby for helping me with TGUI 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "KeypadLock", name + "'s keypad")
+		ui = new(user, src, "KeypadLock", parent + "'s keypad")
 		ui.open()
 		ui.set_autoupdate(TRUE)
 
