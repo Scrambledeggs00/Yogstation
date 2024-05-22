@@ -14,14 +14,14 @@
 	//If there is an error message
 	var/error_message = FALSE
 	//If a display message can be replaced by code
-	var/display_message = TRUE
+	var/replace_message = TRUE
 	//Sound to play
 	var/keypad_sound = 'sound/machines/terminal_select.ogg'
 
 /obj/item/storage/secureTGUI/ui_state(mob/user)
 	return GLOB.physical_state
 
-/obj/item/storage/secureTGUI/ui_interact(mob/user, datum/tgui/ui)
+/obj/item/storage/secureTGUI/ui_interact(mob/user, datum/tgui/ui) //Thanks for the help with TGUI chubby
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "SecureTGUI", name + "'s keypad")
@@ -44,9 +44,9 @@
 			if("0","1","2","3","4","5","6","7","8","9")
 				//No input when an error exists
 				if(!error_message)
-					if(display_message == TRUE)
+					if(replace_message == TRUE)
 						keypad_input = digit
-						display_message = FALSE
+						replace_message = FALSE
 					else
 						keypad_input += digit
 					//Throw an error if too many digits
@@ -82,7 +82,7 @@
 			if("R")
 				keypad_input = "INPUT 5 DIGIT CODE"
 				error_message = FALSE
-				display_message = TRUE
+				replace_message = TRUE
 				lock_status = TRUE
 				lock_display = "LOCKED"
 				. = TRUE
