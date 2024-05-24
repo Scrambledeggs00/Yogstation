@@ -28,11 +28,6 @@
 
 	var/atom/atom_parent = parent
 
-	if(atom_parent != /obj/item/storage/briefcase/secure)
-		var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-		STR.set_holdable(null, list(/obj/item/storage/briefcase/secure))
-		STR.max_w_class = 8 //??
-
 	atom_parent.update_appearance()
 
 /datum/component/keypad_lock/RegisterWithParent()
